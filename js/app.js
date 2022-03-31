@@ -1,4 +1,5 @@
-let posts = [];
+let likepost = [];
+console.log(posts);
 
 const likedPostsId = [];
 const reportedPostsId = [];
@@ -13,10 +14,12 @@ const getReportedPosts = () => {
 
 const isLiked = (id) => {
     return likedPostsId.length && !!likedPostsId.includes(id);
+    console.log(posts);
 };
 
 const addToLiked = (id) => {
     likedPostsId.push(id);
+    // console.log(likedPostsId);
     showPosts(posts);
 };
 
