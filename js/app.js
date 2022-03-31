@@ -1,4 +1,4 @@
-let posts=[ ];
+let posts = [];
 
 const likedPostsId = [];
 const reportedPostsId = [];
@@ -12,11 +12,11 @@ const getReportedPosts = () => {
 };
 
 const isLiked = (id) => {
-    return likedPostsId?.length && !!likedPostsId.includes(id);
+    return likedPostsId.length && !!likedPostsId.includes(id);
 };
 
 const addToLiked = (id) => {
-    likedPostsId.plus(id); 
+    likedPostsId.push(id);
     showPosts(posts);
 };
 
@@ -27,24 +27,25 @@ const reportPost = (id) => {
 };
 
 const displayContent = (text) => {
-    return text.length < 30 ? 'text' : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
+    return text.length < 30 ? text : text.slice(0, 30) + "<span class='fw-bold'>... read more</span>";
 };
 
 const switchTab = (id) => {
+
     if (id === "posts") {
-        document.getElementById( "posts" ).style.display = "grid";
-        document.getElementById( "liked" ).style.display = "none";
-        document.getElementById( "reported" ).style.display = "none";
+        document.getElementById("posts").style.display = "grid";
+        document.getElementById("liked").style.display = "none";
+        document.getElementById("reported").style.display = "none";
     } else if (id === "liked") {
-        document.getElementById( "liked" ).style.display = "block";
-        document.getElementById( "posts" ).style.display = "none";
-        document.getElementById( "reported" ).style.display = "none";
+        document.getElementById("liked").style.display = "block";
+        document.getElementById("posts").style.display = "none";
+        document.getElementById("reported").style.display = "none";
 
         displayLikedPosts();
     } else {
-        document.getElementById( "reported" ).style.display = "block";
-        document.getElementById( "posts" ).style.display = "none";
-        document.getElementById( "liked" ).style.display = "none";
+        document.getElementById("reported").style.display = "block";
+        document.getElementById("posts").style.display = "none";
+        document.getElementById("liked").style.display = "none";
 
         displayReportedPosts();
     }
@@ -52,8 +53,9 @@ const switchTab = (id) => {
 
 const createPost = (post) => {
     const image = post.image;
-    const div = document.createElement( "article" );
-    div.classList.add( "post" );
+    const profileImage = post.userImage;
+    const div = document.createElement("article");
+    div.classList.add("post");
     div.innerHTML = `
               <div class="post__header">
                 <div class="post__profile">
@@ -62,7 +64,7 @@ const createPost = (post) => {
                     target="_blank"
                     class="post__avatar"
                   >
-                    <img src="${image}" alt="User Picture" />
+                    <img src="${profileImage}" alt="User Picture" />
                   </a>
                   <a href="#" class="post__user">phero</a>
                 </div>
@@ -85,7 +87,7 @@ const createPost = (post) => {
               <div class="post__footer">
                 <div class="post__buttons">
                   <button class="post__button" onclick="addToLiked(${post.id})">
-                  <i class="fa-solid fa-heart ${isLiked(post.id) && "text-danger"}"></i>
+                  <i class="fa-solid fa-heart ${isLiked(post.id) && 'text-danger'}"></i>
                     
                   </button>
                   <button class="post__button">
@@ -120,9 +122,9 @@ const createPost = (post) => {
                   <div class="post__description">
                     <small>
                       <a class="post__name--underline" href="#">
-                          ${post.comments?.user}
-                      </a>
-                      ${post.comments?.text}
+                      ${post.comments[0].user}
+                      </a><br>
+                      ${post.comments[0].text}
                     </small>
                   </div>
                   <span class="post__date-time">30 minutes ago</span>
@@ -133,7 +135,7 @@ const createPost = (post) => {
 };
 
 const showPosts = (posts) => {
-    const productsContainer = document.getElementById( "posts" );
+    const productsContainer = document.getElementById("posts");
     productsContainer.innerHTML = "";
 
     posts.forEach((post) => {
@@ -144,9 +146,10 @@ const showPosts = (posts) => {
 
 const displayLikedPosts = () => {
     const likedPosts = getLikedPosts();
-    likedPosts.forEach((post) => {
+    likedPosts.forEach(post => {
+        console.log(post);
         const div = createPost(post);
-        document.getElementById( "liked" ).appendChild(div);
+        document.getElementById("liked").appendChild(div);
     });
 };
 
@@ -154,14 +157,14 @@ const displayReportedPosts = () => {
     const reportedPosts = getReportedPosts();
     posts.forEach((post) => {
         const div = createPost(post);
-        document.getElementById( "reported" ).appendChild(div);
+        document.getElementById("reported").appendChild(div);
     });
 };
 
-const loadPosts = async () =>{
-  let data = await fetch('../data/posts.json');
-  posts = await data.json();
-  showPosts(posts);
+const loadPosts = async() => {
+    let data = await fetch('../data/posts.json');
+    posts = await data.json();
+    showPosts(posts);
 }
 
 loadPosts();
