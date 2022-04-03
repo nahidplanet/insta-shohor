@@ -5,6 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Insta-Sohor</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <link rel="stylesheet" href="./css/style.css" />
         <!-- Latest compiled and minified CSS -->
         <link
@@ -77,8 +78,63 @@
                 <h1>Reported posts</h1>
             </div>
         </main>
-        <footer></footer>
-
+        <section class="question container mt-5">
+          <div class="row">
+            <div class="col-md-6">
+           <img height="100%" width="100%" src="https://cdn.searchenginejournal.com/wp-content/uploads/2020/08/how-to-identify-questions-optimize-your-site-for-qa-faq-more-5f4546ee46f53-760x400.png" alt="qusetion" >
+            </div>
+            <div class="col-md-6">
+              <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Even Loop কি এবং কিভাবে কাজ করে?
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      আমরা জানি javascript কে run করার জন্য ব্যবহার করা হয় ক্রোমের V8 ইঞ্জিন।  এছাড়াও বিভিন্ন ব্রাউজার আলাদা আলাদ ইঞ্জিনের সাহায্য নিয়ে থাকে।আমরা যখন কোনো javascript কোড কে run করায় তখন call stack এর মধ্যে গ্লোবাল execution context  হিসেবে main() ফাংশনকে কল করে।তারপর javascript synchronised পদ্ধতিতে source কোডের ফাংশন গুলোকে এক এক করে callstack এ তুলতে থাকে  এবং প্রিন্ট করতে থাকে।  এই প্রক্রিয়া টি last in fast out পদ্ধতিতে হয়ে থাকে।  একএক করে প্রিন্ট  হয়ে callstack. থেকে লাস্ট থেকে ফাস্টের দিকে একটি করি করে প্রিন্ট করে out হতে থাকে। তবে synchronous. এর জায়গায় asynchronous ফাংশন এলে javascript এক এক করে callstack এ ফাংশন গুলো তুলে সে বসে থাকে না বরং asynchronous ফাংশনকে ব্রাউজারে ক্ষেত্রে  web api এবং node এর ক্ষেত্রে c++ apiapi এর কাছে ছেড়ে দিয়ে বাকি ফাংশনগুলো execution করে। callstack এর সব কাজ শেষ হলে ঐ asynchronous ফাংশনকে web api/c++ api  থেকে callback queue এর কাছে পাঠিয়ে দেয়। এই callback queue থেকে callstack. এ একএক একরে তুলতে ও প্রিন্ট করতে Event Loop কাজ করে।
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Javascript কিভাবে কাজ করে?
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      কম্পিউটার আমাদের কোড বুঝতে পারে না। আবার আমরা কম্পিউটারের কোড বুঝতে পারি না। কম্পিউটার এ আমরা যে js কোড লিখি তা ব্রাউজারের বা node এর v8 ইঞ্জিন পার্স করে একধরনের সিন টেক্সট ট্রি আকারে সাজায়। তারপর interpreted o compiled করার কাজটি JIT(just in time)  এর মাধ্যমে byte code এ রুপান্তর করে।  ফলে কম্পিউটার তা বুঝতে পারে। ইন্টারপ্রেট লাইন বাই লাইন কোড read করে যা ডিবাগ হেল্পফুল হলেও অনেক স্লো প্রসেস,  আবার কম্পাইলার পুরো কোড read করে বলে ডিবাগ করাটা কষ্টসাধ্য ব্যাপার।  তাই এই সমস্যার সমাধান করে JIT। ফলে javascript একই সাথে যেমন ফাস্ট  run করে,  তেমনি ডিবাগ করতেও সুবিধা।
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      local storage vs session storage vs cookies
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      Web storage Api আমাদের ব্রাউজারে ডাটা read,Write,update, delete করতে সাহায্য করে থাকে।
+                      Web storage এর প্রধান ২টি জিনিস হলো <br>
+                      1. Local Storage <br>
+                      2.Session Storage <br>
+                      Local Storage : Local Storage এর সাহায্য ডাটা Store করলে তা ব্রাউজার close করার পড়েও থেকে যায়। ফলে user অনেক দিন পূর্বের ডাটা তার ব্রাউজার থেকেই পেয়ে থাকে।<br>
+                      Session Storage : Session storage এর ডাটা স্থানীয় নয় বরং কিছু সময় পর্যন্ত তা জমা থাকে ব্রাউজারে।  ব্রাউজার close করার সাথে সাথে তা ব্রাউজার থেকে ডিলিট হয়ে যায়।<br><br>
+                      
+                      Web storage এর আরেকটি গুরুত্বপূর্ণ বিষয় হলো cookies। <br>
+                      cookies কোন নির্দিষ্ট সময় পর্যন্ত user এর ডাটা সেভ করে রাখতে পারে। ব্রাউজার কোনো সার্ভারে রিকুয়েষ্ট পাঠাতে গিয়ে cookies এর মাধ্যমে কিছু ডাটা ব্রাউজারে জমা থাকে আবার সেই ডাটা সার্ভার চাইলে জমা রাখতে পারে এতে করে পরবর্তী তে সার্ভার বুঝতে পারে কোন user রিকুয়েষ্ট পাঠিয়েছে। বিভিন্ন লগিন এক্সেস এ cookies এর ব্যবহার দেখা যায়।  ফলে user কে বার বার ইনফরমেশন দিয়ে লগইন করতে হয় না।<br>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <footer style="margin-top: 100px;"></footer>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
         <!-- add javascript  file  -->
         <script src="./js/app.js"></script>
     </body>
